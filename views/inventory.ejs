@@ -1,1 +1,15 @@
-<p>hello world, this is the inventory page</p>
+<% if (whiskeys.length > 0) { %>
+
+    <% whiskeys.forEach((whiskey) => { %>
+        <div>
+             <span><%= whiskey.whiskey_name %>:</span>
+             <span><%= whiskey.category_name %>,</span>
+             <span><%= whiskey.price %>$,</span>
+             <span><%= whiskey.stock %></span>
+        </div>
+        <br>
+    <% }) %>
+
+<% } else { %>
+    <p>No whiskeys</p>
+<% } %>
