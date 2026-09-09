@@ -5,6 +5,7 @@ async function getWhiskeys() {
     SELECT
       w.name AS whiskey_name,
       c.name AS category_name,
+      w.age,
       w.price,
       w.stock
     FROM whiskey w

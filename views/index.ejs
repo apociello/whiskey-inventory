@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whiskey Inventory</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+
+<% if (whiskeys.length > 0) { %>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Whisky</th>
+                <th>Category</th>
+                <th>Age</th>
+                <th>Price</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% whiskeys.forEach((whiskey) => { %>
+                <tr>
+                    <td>
+                        <a href="/inventory/<%= whiskey.whiskey_id %>">
+                            <%= whiskey.whiskey_name %>
+                        </a>
+                    </td>
+                    <td><%= whiskey.category_name %></td>
+                    <td><%= whiskey.age ?? '-' %></td>
+                    <td>$<%= whiskey.price %></td>
+                    <td><%= whiskey.stock %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+<% } else { %>
+    <p>No whiskeys</p>
+<% } %>
