@@ -1,3 +1,21 @@
+.inventory-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.inventory-controls .left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.inventory-controls input,
+.inventory-controls select,
+.inventory-controls button {
+    padding: 0.5rem 0.65rem;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

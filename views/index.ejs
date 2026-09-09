@@ -8,12 +8,46 @@
     <link rel="stylesheet" href="/styles/index.css">
 </head>
 
+<div class="inventory-controls"> 
+    <div class="left">
+        <input type="text" placeholder="Search...">
+
+        <select>
+            <option value="">All categories</option>
+            <option value="scotch">Scotch</option>
+            <option value="bourbon">Bourbon</option>
+            <option value="irish">Irish</option>
+            <option value="japanese">Japanese</option>
+            <option value="tennessee">Tennessee</option>
+        </select>
+
+       <select>
+            <option value="">Sort by...</option>
+            <option value="name">Name</option>
+            <option value="price">Price</option>
+            <option value="stock">Stock</option>
+        </select>
+
+        <select>
+            <option value="">Order...</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+
+        <button type="button">Search</button>
+    </div>
+    
+    <div class="right">
+        <button type="button">Add Whisky</button>
+    </div>
+</div>
+
 <% if (whiskeys.length > 0) { %>
 
     <table>
         <thead>
             <tr>
-                <th>Whisky</th>
+                <th>Whiskey</th>
                 <th>Category</th>
                 <th>Age</th>
                 <th>Price</th>

@@ -24,7 +24,7 @@ VALUES
   ('Bourbon'),
   ('Irish'),
   ('Japanese'),
-  ('Tennessee Whiskey');
+  ('Tennessee');
 
 INSERT INTO whiskey (name, age, price, stock, category_id)
 VALUES
