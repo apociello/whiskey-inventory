@@ -1,33 +1,33 @@
 <%- include('./partials/head.ejs') %>
 
 <div class="inventory-controls"> 
-    <div class="left">
-        <input type="text" placeholder="Search...">
+    <form action="/inventory" method="GET" class="left">
+        <input type="text" name="search" value="<%= locals.search || '' %>" placeholder="Search...">
 
-        <select>
+        <select name="category">
             <option value="">All categories</option>
-            <option value="scotch">Scotch</option>
-            <option value="bourbon">Bourbon</option>
-            <option value="irish">Irish</option>
-            <option value="japanese">Japanese</option>
-            <option value="tennessee">Tennessee</option>
+            <option value="Scotch" <%= category === 'Scotch' ? 'selected' : '' %>>Scotch</option>
+            <option value="Bourbon" <%= category === 'Bourbon' ? 'selected' : '' %>>Bourbon</option>
+            <option value="Irish" <%= category === 'Irish' ? 'selected' : '' %>>Irish</option>
+            <option value="Japanese" <%= category === 'Japanese' ? 'selected' : '' %>>Japanese</option>
+            <option value="Tennessee" <%= category === 'Tennessee' ? 'selected' : '' %>>Tennessee</option>
         </select>
 
-       <select>
+       <select name="sort">
             <option value="">Sort by...</option>
-            <option value="name">Name</option>
-            <option value="price">Price</option>
-            <option value="stock">Stock</option>
+            <option value="name" <%= sort === 'name' ? 'selected' : '' %>>Name</option>
+            <option value="price" <%= sort === 'price' ? 'selected' : '' %>>Price</option>
+            <option value="stock" <%= sort === 'stock' ? 'selected' : '' %>>Stock</option>
         </select>
 
-        <select>
+        <select name="order">
             <option value="">Order...</option>
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
+            <option value="asc" <%= order === 'asc' ? 'selected' : '' %>>Ascending</option>
+            <option value="desc" <%= order === 'desc' ? 'selected' : '' %>>Descending</option>
         </select>
 
-        <button type="button">Search</button>
-    </div>
+        <button type="submit">Search</button>
+    </form>
     
     <div class="right">
         <button type="button">Add Whisky</button>
