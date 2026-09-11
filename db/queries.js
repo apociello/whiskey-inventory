@@ -18,6 +18,7 @@ async function getWhiskeys(search, category, sort, order) {
     SELECT
       w.name AS whiskey_name,
       c.name AS category_name,
+      w.whiskey_id,
       w.age,
       w.price,
       w.stock
@@ -51,6 +52,26 @@ async function getWhiskeys(search, category, sort, order) {
   return rows;
 }
 
+async function getWhiskey(id) {
+  const query = `
+    SELECT
+      w.name AS whiskey_name,
+      c.name AS category_name,
+      w.whiskey_id,
+      w.age,
+      w.price,
+      w.stock
+    FROM whiskey w
+    JOIN category c
+      ON w.category_id = c.category_id
+    WHERE w.whiskey_id = $1
+  `;
+
+  const { rows } = await pool.query(query, [id]);
+  return rows[0];
+}
+
 module.exports = {
   getWhiskeys,
+  getWhiskey,
 };

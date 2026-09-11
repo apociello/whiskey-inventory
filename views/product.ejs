@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+
+    <form action="">
+        <select name="category">
+            <option value="">All categories</option>
+            <option value="Scotch" <%= whiskey.category_name === 'Scotch' ? 'selected' : '' %>>Scotch</option>
+            <option value="Bourbon" <%= whiskey.category_name === 'Bourbon' ? 'selected' : '' %>>Bourbon</option>
+            <option value="Irish" <%= whiskey.category_name === 'Irish' ? 'selected' : '' %>>Irish</option>
+            <option value="Japanese" <%= whiskey.category_name === 'Japanese' ? 'selected' : '' %>>Japanese</option>
+            <option value="Tennessee" <%= whiskey.category_name === 'Tennessee' ? 'selected' : '' %>>Tennessee</option>
+        </select>
+
+        <input type="text" name="whiskey_name" value="<%= whiskey.whiskey_name %>">
+        <input type="number" name="age" value="<%= whiskey.age ?? '' %>" <%= !whiskey.age ? 'disabled' : '' %>>
+        <input type="number" name="price" value="<%= whiskey.price %>">
+        <input type="number" name="stock" value="<%= whiskey.stock %>">
+
+        <button>Edit</button>
+        <button>delete</button>
+    </form>
+
+</body>
+</html>

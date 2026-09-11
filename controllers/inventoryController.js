@@ -2,7 +2,7 @@ const db = require('../db/queries');
 const { query, matchedData } = require('express-validator');
 const sanitizeSearch = [query('search').trim()];
 
-const inventory = [
+const inventory_index = [
   sanitizeSearch,
   async (req, res) => {
     let { category, sort, order } = req.query;
@@ -28,6 +28,18 @@ const inventory = [
   },
 ];
 
+const product_get = async (req, res) => {
+  const id = Number(req.params.id);
+  const whiskey = await db.getWhiskey(id);
+
+  res.render('product', {
+    whiskey: whiskey,
+    title: 'product',
+    style: 'product',
+  });
+};
+
 module.exports = {
-  inventory,
+  inventory_index,
+  product_get,
 };
