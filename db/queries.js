@@ -33,6 +33,7 @@ async function getWhiskeys(search, category, sort, order) {
   if (sort) {
     const sortColumns = {
       name: 'w.name',
+      age: 'w.age',
       price: 'w.price',
       stock: 'w.stock',
     };
@@ -42,6 +43,8 @@ async function getWhiskeys(search, category, sort, order) {
     if (order === 'desc') {
       query += ' DESC';
     }
+
+    query += ' NULLS LAST';
   }
 
   const { rows } = await pool.query(query, values);
