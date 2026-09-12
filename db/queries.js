@@ -39,13 +39,15 @@ async function getWhiskeys(search, category, sort, order) {
       stock: 'w.stock',
     };
 
-    query += ` ORDER BY ${sortColumns[sort]}`;
+    if (sortColumns[sort]) {
+      query += ` ORDER BY ${sortColumns[sort]}`;
 
-    if (order === 'desc') {
-      query += ' DESC';
+      if (order === 'desc') {
+        query += ' DESC';
+      }
+
+      query += ' NULLS LAST';
     }
-
-    query += ' NULLS LAST';
   }
 
   const { rows } = await pool.query(query, values);

@@ -30,7 +30,16 @@ const inventory_index = [
 
 const product_get = async (req, res) => {
   const id = Number(req.params.id);
+
+  if (!Number.isInteger(id)) {
+    return res.status(404).render('404', { title: '404', style: '404' });
+  }
+
   const whiskey = await db.getWhiskey(id);
+
+  if (!whiskey) {
+    return res.status(404).render('404', { title: '404', style: '404' });
+  }
 
   res.render('product', {
     whiskey: whiskey,
