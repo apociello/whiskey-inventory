@@ -1,5 +1,12 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 .whiskey-form {
+  margin: 3rem auto;
   max-width: 500px;
+  width: 100%;
   padding: 1.6rem;
   border: 1px solid #ccc;
 }

@@ -12,3 +12,7 @@ body {
 button {
   cursor: pointer;
 }
+
+a {
+  color: #222;
+}
