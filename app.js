@@ -21,7 +21,7 @@ app.use('/inventory', inventoryRoutes);
 
 // 404 page
 app.use((req, res) => {
-  res.status(404).render('404.ejs');
+  res.status(404).render('404.ejs', { title: '404', style: '404' });
 });
 
 // start server

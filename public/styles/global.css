@@ -8,3 +8,7 @@ body {
   height: 100dvh;
   padding: 2rem;
 }
+
+button {
+  cursor: pointer;
+}
