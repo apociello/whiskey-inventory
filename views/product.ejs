@@ -4,36 +4,39 @@
 
 <body>
     <a href="/inventory/" >Back</a>
+    <div class="form-wrapper">
+        
+        <h1>Edit Whiskey</h1>
+        <form action="" class="whiskey-form">
 
-    <form action="" class="whiskey-form">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+                <option value="">All categories</option>
+                <option value="Scotch" <%= whiskey.category_name === 'Scotch' ? 'selected' : '' %>>Scotch</option>
+                <option value="Bourbon" <%= whiskey.category_name === 'Bourbon' ? 'selected' : '' %>>Bourbon</option>
+                <option value="Irish" <%= whiskey.category_name === 'Irish' ? 'selected' : '' %>>Irish</option>
+                <option value="Japanese" <%= whiskey.category_name === 'Japanese' ? 'selected' : '' %>>Japanese</option>
+                <option value="Tennessee" <%= whiskey.category_name === 'Tennessee' ? 'selected' : '' %>>Tennessee</option>
+            </select>
 
-        <label for="category">Category</label>
-        <select id="category" name="category">
-            <option value="">All categories</option>
-            <option value="Scotch" <%= whiskey.category_name === 'Scotch' ? 'selected' : '' %>>Scotch</option>
-            <option value="Bourbon" <%= whiskey.category_name === 'Bourbon' ? 'selected' : '' %>>Bourbon</option>
-            <option value="Irish" <%= whiskey.category_name === 'Irish' ? 'selected' : '' %>>Irish</option>
-            <option value="Japanese" <%= whiskey.category_name === 'Japanese' ? 'selected' : '' %>>Japanese</option>
-            <option value="Tennessee" <%= whiskey.category_name === 'Tennessee' ? 'selected' : '' %>>Tennessee</option>
-        </select>
+            <label for="whiskey_name">Whiskey</label>
+            <input id="whiskey_name" type="text"name="whiskey_name" value="<%= whiskey.whiskey_name %>">
 
-        <label for="whiskey_name">Whiskey</label>
-        <input id="whiskey_name" type="text"name="whiskey_name" value="<%= whiskey.whiskey_name %>">
+            <label for="age">Age</label>
+            <input id="age" name="age" value="<%= whiskey.age ?? '-' %>" value="<%= whiskey.age ?? '-' %>" 
+            <%= whiskey.age == null ? 'type="text" disabled' : 'type="number' %>>
 
-        <label for="age">Age</label>
-        <input id="age" name="age" value="<%= whiskey.age ?? '-' %>" value="<%= whiskey.age ?? '-' %>" 
-        <%= whiskey.age == null ? 'type="text" disabled' : 'type="number' %>>
+            <label for="price">Price</label>
+            <input id="price" type="number" step="0.01" name="price" value="<%= whiskey.price %>">
 
-        <label for="price">Price</label>
-        <input id="price" type="number" step="0.01" name="price" value="<%= whiskey.price %>">
+            <label for="stock">Stock</label>
+            <input id="stock" type="number" name="stock" value="<%= whiskey.stock %>">
 
-        <label for="stock">Stock</label>
-        <input id="stock" type="number" name="stock" value="<%= whiskey.stock %>">
+            <button type="submit">Edit</button>
+            <button type="button">Delete</button>
 
-        <button type="submit">Edit</button>
-        <button type="button">Delete</button>
-
-    </form>
-
+        </form>
+            
+    </div>
 </body>
 </html>

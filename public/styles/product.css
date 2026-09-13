@@ -3,8 +3,18 @@ body {
   flex-direction: column;
 }
 
-.whiskey-form {
-  margin: 3rem auto;
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0.5rem;
+}
+
+.form-wrapper h1 {
+    margin-bottom: 2rem;
+}
+
+.form-wrapper .whiskey-form {
   max-width: 500px;
   width: 100%;
   padding: 1.6rem;
