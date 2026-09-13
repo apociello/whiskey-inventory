@@ -23,8 +23,13 @@
             <input id="whiskey_name" type="text" name="whiskey_name" required>
 
             <label for="age">Age</label>
-            <input id="age" type="number" min="1" name="age" required>
-
+            <div class="double-input">
+                <input id="age" type="number" min="1" name="age" disabled>
+                <div class="check-div">
+                    <input type="checkbox" id="age_toggle">
+                </div>
+            </div>
+            
             <label for="price">Price</label>
             <input id="price" type="number" step="0.01" min="0" name="price" required>
 
@@ -35,5 +40,7 @@
 
         </form>
     </div>
+
+    <script src="/js/whiskey_form.js"></script>
 </body>
 </html>

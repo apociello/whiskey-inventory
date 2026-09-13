@@ -72,3 +72,28 @@ body {
   padding: 0.5rem 0.8rem;
   margin-right: 0.7rem;
 }
+
+.whiskey-form .double-input {
+  display: flex;
+  margin-bottom: 1.6rem;
+  gap: 0.5rem;
+}
+
+.whiskey-form .double-input input[type='number'] {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.whiskey-form .double-input .check-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.whiskey-form .double-input input[type='checkbox'] {
+  margin-bottom: 0;
+}
+
+.whiskey-form .double-input input[type='checkbox']:hover {
+  cursor: pointer;
+}
