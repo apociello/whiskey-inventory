@@ -48,7 +48,12 @@ const product_get = async (req, res) => {
   });
 };
 
+const new_product_get = (req, res) => {
+  res.render('new_product', {title: 'new product', style: 'new_product'})
+}
+
 module.exports = {
   inventory_index,
   product_get,
+  new_product_get,
 };

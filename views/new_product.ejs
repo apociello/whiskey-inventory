@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <a href="/inventory/" >Back</a>
+
+    <form action="" class="whiskey-form">
+
+        <label for="category">Category</label>
+        <select id="category" name="category" required>
+            <option value="Scotch">Scotch</option>
+            <option value="Bourbon">Bourbon</option>
+            <option value="Irish">Irish</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Tennessee">Tennessee</option>
+        </select>
+
+        <label for="whiskey_name">Whiskey</label>
+        <input id="whiskey_name" type="text" name="whiskey_name" required>
+
+        <label for="age">Age</label>
+        <input id="age" type="number" name="age" required>
+
+        <label for="price">Price</label>
+        <input id="price" type="number" step="0.01" name="price" required>
+
+        <label for="stock">Stock</label>
+        <input id="stock" type="number" name="stock" required>
+
+        <button type="submit">Add</button>
+
+    </form>
+
+</body>
+</html>
