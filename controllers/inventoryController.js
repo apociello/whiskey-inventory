@@ -44,7 +44,6 @@ const product_get = async (req, res) => {
   res.render('product', {
     whiskey: whiskey,
     title: 'product',
-    style: 'product',
   });
 };
 
