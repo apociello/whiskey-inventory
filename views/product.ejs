@@ -20,11 +20,11 @@
             </select>
 
             <label for="whiskey_name">Whiskey</label>
-            <input id="whiskey_name" type="text" name="whiskey_name" value="<%= whiskey.whiskey_name %>" required>
+            <input id="whiskey_name" type="text" name="whiskey_name" value="<%= whiskey.whiskey_name %>" minlength="1" maxlength="50"  required>
 
             <label for="age">Age</label>
             <div class="double-input">
-                <input id="age" name="age" type="number" min="1" <%= whiskey.age == null ? 'disabled' : 'required' %>
+                <input id="age" name="age" type="number" min="1" max="100" <%= whiskey.age == null ? 'disabled' : 'required' %>
                 value="<%= whiskey.age ?? '' %>">
                 <div class="check-div">
                     <input type="checkbox" id="age_toggle" <%= whiskey.age != null ? 'checked' : '' %>>
@@ -32,10 +32,10 @@
             </div>
             
             <label for="price">Price</label>
-            <input id="price" type="number" step="0.01" min="0" name="price" value="<%= whiskey.price %>" required>
+            <input id="price" type="number" step="0.01" min="1" max="100000" name="price" value="<%= whiskey.price %>" required>
 
             <label for="stock">Stock</label>
-            <input id="stock" type="number" min="0" name="stock" value="<%= whiskey.stock %>" required>
+            <input id="stock" type="number" min="0" max="10000" name="stock" value="<%= whiskey.stock %>" required>
 
             <button type="submit">Edit</button>
             <button type="button">Delete</button>
