@@ -1,6 +1,35 @@
 const db = require('../db/queries');
-const { query, matchedData } = require('express-validator');
+const {
+  body,
+  validationResult,
+  query,
+  matchedData,
+} = require('express-validator');
+
+// Validations
 const sanitizeSearch = [query('search').trim()];
+const validateWhiskey = [
+  body('category')
+    .isIn(['Scotch', 'Bourbon', 'Irish', 'Japanese', 'Tennessee'])
+    .withMessage('Invalid category.'),
+  body('whiskey_name')
+    .trim()
+    .isLength({ min: 1, max: 50 })
+    .withMessage('Whiskey name must be between 1 and 50 characters.'),
+  body('age')
+    .optional({ values: 'falsy' })
+    .isInt({ min: 1, max: 100 })
+    .withMessage('Age must be between 1 and 100.')
+    .toInt(),
+  body('price')
+    .isFloat({ min: 1, max: 100000 })
+    .withMessage('Price must be between 1 and 100,000.')
+    .toFloat(),
+  body('stock')
+    .isInt({ min: 0, max: 10000 })
+    .withMessage('Stock must be between 0 and 10000.')
+    .toInt(),
+];
 
 const inventory_index = [
   sanitizeSearch,
@@ -51,8 +80,26 @@ const new_product_get = (req, res) => {
   res.render('new_product', { title: 'new product' });
 };
 
+const new_product_post = [
+  validateWhiskey,
+  (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      console.log(errors);
+      return res.status(400).render('new_product', {
+        title: 'new product',
+      });
+    }
+
+    console.log(matchedData(req));
+    res.redirect('/inventory');
+  },
+];
+
 module.exports = {
   inventory_index,
   product_get,
   new_product_get,
+  new_product_post,
 };
