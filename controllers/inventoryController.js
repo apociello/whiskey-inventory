@@ -82,17 +82,27 @@ const new_product_get = (req, res) => {
 
 const new_product_post = [
   validateWhiskey,
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
       console.log(errors);
       return res.status(400).render('new_product', {
         title: 'new product',
+        errors: errors.array(),
       });
     }
 
-    console.log(matchedData(req));
+    const { category, whiskey_name, age, price, stock } = matchedData(req);
+
+    await db.addWhiskey({
+      category,
+      whiskey_name,
+      age: age ?? null,
+      price,
+      stock,
+    });
+
     res.redirect('/inventory');
   },
 ];

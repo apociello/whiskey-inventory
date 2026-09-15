@@ -73,7 +73,24 @@ async function getWhiskey(id) {
   return rows[0];
 }
 
+async function addWhiskey({ category, whiskey_name, age, price, stock }) {
+  const categoryResult = await pool.query(
+    'SELECT category_id FROM category WHERE name = $1',
+    [category],
+  );
+
+  const category_id = categoryResult.rows[0].category_id;
+
+  const query = `
+    INSERT INTO whiskey (name, age, price, stock, category_id)
+    VALUES ($1, $2, $3, $4, $5)
+  `;
+
+  await pool.query(query, [whiskey_name, age, price, stock, category_id]);
+}
+
 module.exports = {
   getWhiskeys,
   getWhiskey,
+  addWhiskey,
 };
