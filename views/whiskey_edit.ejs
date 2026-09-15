@@ -37,7 +37,7 @@
             <label for="stock">Stock</label>
             <input id="stock" type="number" min="0" max="10000" name="stock" value="<%= whiskey.stock %>" required>
 
-            <div class="buttons-div">
+            <div class="buttons-div" style="display: flex; gap: 0.5rem;">
                 <button type="submit" formaction="/inventory/<%= whiskey.whiskey_id %>/edit">
                     Edit
                 </button>

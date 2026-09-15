@@ -57,7 +57,7 @@ const inventory_index = [
   },
 ];
 
-const product_get = async (req, res) => {
+const whiskey_edit_get = async (req, res) => {
   const id = Number(req.params.id);
 
   if (!Number.isInteger(id)) {
@@ -70,25 +70,25 @@ const product_get = async (req, res) => {
     return res.status(404).render('404', { title: '404', style: '404' });
   }
 
-  res.render('product', {
+  res.render('whiskey_edit', {
     whiskey: whiskey,
-    title: 'product',
+    title: 'edit whiskey',
   });
 };
 
-const new_product_get = (req, res) => {
-  res.render('new_product', { title: 'new product' });
+const whiskey_new_get = (req, res) => {
+  res.render('whiskey_new', { title: 'new whiskey' });
 };
 
-const new_product_post = [
+const whiskey_new_post = [
   validateWhiskey,
   async (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
       console.log(errors);
-      return res.status(400).render('new_product', {
-        title: 'new product',
+      return res.status(400).render('whiskey_new', {
+        title: 'new whiskey',
         errors: errors.array(),
       });
     }
@@ -107,7 +107,7 @@ const new_product_post = [
   },
 ];
 
-const product_edit_post = [
+const whiskey_edit_post = [
   validateWhiskey,
   async (req, res) => {
     const id = Number(req.params.id);
@@ -121,8 +121,8 @@ const product_edit_post = [
     if (!errors.isEmpty()) {
       const whiskey = await db.getWhiskey(id);
 
-      return res.status(400).render('product', {
-        title: 'product',
+      return res.status(400).render('whiskey_edit', {
+        title: 'edit whiskey',
         whiskey,
         errors: errors.array(),
       });
@@ -142,7 +142,7 @@ const product_edit_post = [
   },
 ];
 
-const product_delete_post = async (req, res) => {
+const whiskey_delete_post = async (req, res) => {
   const id = Number(req.params.id);
 
   if (!Number.isInteger(id)) {
@@ -155,9 +155,9 @@ const product_delete_post = async (req, res) => {
 
 module.exports = {
   inventory_index,
-  product_get,
-  new_product_get,
-  new_product_post,
-  product_edit_post,
-  product_delete_post,
+  whiskey_edit_get,
+  whiskey_new_get,
+  whiskey_new_post,
+  whiskey_edit_post,
+  whiskey_delete_post,
 };
