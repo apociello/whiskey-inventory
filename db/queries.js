@@ -89,8 +89,31 @@ async function addWhiskey({ category, whiskey_name, age, price, stock }) {
   await pool.query(query, [whiskey_name, age, price, stock, category_id]);
 }
 
+async function editWhiskey(id, { category, whiskey_name, age, price, stock }) {
+  const categoryResult = await pool.query(
+    'SELECT category_id FROM category WHERE name = $1',
+    [category],
+  );
+
+  const category_id = categoryResult.rows[0].category_id;
+
+  const query = `
+    UPDATE whiskey
+    SET name = $1, age = $2, price = $3, stock = $4, category_id = $5
+    WHERE whiskey_id = $6
+  `;
+
+  await pool.query(query, [whiskey_name, age, price, stock, category_id, id]);
+}
+
+async function deleteWhiskey(id) {
+  await pool.query('DELETE FROM whiskey WHERE whiskey_id = $1', [id]);
+}
+
 module.exports = {
   getWhiskeys,
   getWhiskey,
   addWhiskey,
+  editWhiskey,
+  deleteWhiskey,
 };

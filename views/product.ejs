@@ -8,7 +8,7 @@
     <div class="form-wrapper">
         <h1>Edit Whiskey</h1>
 
-        <form action="" class="whiskey-form" autocomplete="off">
+        <form method="POST" action="" class="whiskey-form" autocomplete="off">
 
             <label for="category">Category</label>
             <select id="category" name="category" required>
@@ -37,8 +37,15 @@
             <label for="stock">Stock</label>
             <input id="stock" type="number" min="0" max="10000" name="stock" value="<%= whiskey.stock %>" required>
 
-            <button type="submit">Edit</button>
-            <button type="button">Delete</button>
+            <div class="buttons-div">
+                <button type="submit" formaction="/inventory/<%= whiskey.whiskey_id %>/edit">
+                    Edit
+                </button>
+
+                <button type="submit" formaction="/inventory/<%= whiskey.whiskey_id %>/delete">
+                    Delete
+                </button>
+            </div>
         </form>
     </div>
 

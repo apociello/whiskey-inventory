@@ -107,9 +107,57 @@ const new_product_post = [
   },
 ];
 
+const product_edit_post = [
+  validateWhiskey,
+  async (req, res) => {
+    const id = Number(req.params.id);
+
+    if (!Number.isInteger(id)) {
+      return res.status(404).render('404', { title: '404', style: '404' });
+    }
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      const whiskey = await db.getWhiskey(id);
+
+      return res.status(400).render('product', {
+        title: 'product',
+        whiskey,
+        errors: errors.array(),
+      });
+    }
+
+    const { category, whiskey_name, age, price, stock } = matchedData(req);
+
+    await db.editWhiskey(id, {
+      category,
+      whiskey_name,
+      age: age ?? null,
+      price,
+      stock,
+    });
+
+    res.redirect('/inventory');
+  },
+];
+
+const product_delete_post = async (req, res) => {
+  const id = Number(req.params.id);
+
+  if (!Number.isInteger(id)) {
+    return res.status(404).render('404', { title: '404', style: '404' });
+  }
+
+  await db.deleteWhiskey(id);
+  res.redirect('/inventory');
+};
+
 module.exports = {
   inventory_index,
   product_get,
   new_product_get,
   new_product_post,
+  product_edit_post,
+  product_delete_post,
 };

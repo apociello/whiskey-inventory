@@ -70,7 +70,6 @@ body {
 .whiskey-form button {
   width: 100%;
   padding: 0.5rem 0.8rem;
-  margin-right: 0.7rem;
 }
 
 .whiskey-form .double-input {
@@ -96,4 +95,10 @@ body {
 
 .whiskey-form .double-input input[type='checkbox']:hover {
   cursor: pointer;
+}
+
+/* product.ejs */
+.buttons-div {
+  display: flex;
+  gap: 0.5rem;
 }
