@@ -37,6 +37,9 @@
 
             <label for="stock">Stock</label>
             <input id="stock" type="number" min="0" max="10000" name="stock" value="<%= locals.formData?.stock ?? whiskey.stock %>" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"  value="<%= locals.formData?.password ?? '' %>" required>
 
             <div class="buttons-div" style="display: flex; gap: 0.5rem;">
                 <button type="submit" formaction="/inventory/<%= whiskey.whiskey_id %>/edit">

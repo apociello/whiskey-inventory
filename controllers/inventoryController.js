@@ -1,3 +1,5 @@
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
 const db = require('../db/queries');
 const {
   body,
@@ -89,7 +91,7 @@ const whiskey_new_post = [
       return res.status(400).render('whiskey_new', {
         title: 'new whiskey',
         errors: errors.array(),
-        formData: req.body, 
+        formData: req.body,
       });
     }
 
@@ -116,16 +118,19 @@ const whiskey_edit_post = [
       return res.status(404).render('404', { title: '404', style: '404' });
     }
 
-    const errors = validationResult(req);
+    const errors = validationResult(req).array();
 
-    if (!errors.isEmpty()) {
+    if (req.body.password !== ADMIN_PASSWORD) {
+      errors.push({ msg: 'Incorrect password.' });
+    }
+
+    if (errors.length > 0) {
       const whiskey = await db.getWhiskey(id);
-
       return res.status(400).render('whiskey_edit', {
         title: 'edit whiskey',
         whiskey,
-        errors: errors.array(),
-        formData: req.body, 
+        errors,
+        formData: req.body,
       });
     }
 
@@ -148,6 +153,16 @@ const whiskey_delete_post = async (req, res) => {
 
   if (!Number.isInteger(id)) {
     return res.status(404).render('404', { title: '404', style: '404' });
+  }
+
+  if (req.body.password !== ADMIN_PASSWORD) {
+    const whiskey = await db.getWhiskey(id);
+    return res.status(401).render('whiskey_edit', {
+      title: 'edit whiskey',
+      whiskey,
+      errors: [{ msg: 'Incorrect password.' }],
+      formData: req.body,
+    });
   }
 
   await db.deleteWhiskey(id);
