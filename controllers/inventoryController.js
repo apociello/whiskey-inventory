@@ -89,6 +89,7 @@ const whiskey_new_post = [
       return res.status(400).render('whiskey_new', {
         title: 'new whiskey',
         errors: errors.array(),
+        formData: req.body, 
       });
     }
 
@@ -124,6 +125,7 @@ const whiskey_edit_post = [
         title: 'edit whiskey',
         whiskey,
         errors: errors.array(),
+        formData: req.body, 
       });
     }
 

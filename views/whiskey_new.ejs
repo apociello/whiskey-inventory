@@ -12,29 +12,31 @@
 
             <label for="category">Category</label>
             <select id="category" name="category" required>
-                <option value="Scotch">Scotch</option>
-                <option value="Bourbon">Bourbon</option>
-                <option value="Irish">Irish</option>
-                <option value="Japanese">Japanese</option>
-                <option value="Tennessee">Tennessee</option>
+                <option value="Scotch" <%= locals.formData?.category === 'Scotch' ? 'selected' : '' %>>Scotch</option>
+                <option value="Bourbon" <%= locals.formData?.category === 'Bourbon' ? 'selected' : '' %>>Bourbon</option>
+                <option value="Irish" <%= locals.formData?.category === 'Irish' ? 'selected' : '' %>>Irish</option>
+                <option value="Japanese" <%= locals.formData?.category === 'Japanese' ? 'selected' : '' %>>Japanese</option>
+                <option value="Tennessee" <%= locals.formData?.category === 'Tennessee' ? 'selected' : '' %>>Tennessee</option>
             </select>
 
             <label for="whiskey_name">Whiskey</label>
-            <input id="whiskey_name" type="text" name="whiskey_name" minlength="1" maxlength="50" required>
+            <input id="whiskey_name" type="text" name="whiskey_name" value="<%= locals.formData?.whiskey_name ?? '' %>" minlength="1" maxlength="50" required>
 
             <label for="age">Age</label>
             <div class="double-input">
-                <input id="age" type="number" min="1" max="100" name="age" disabled>
+                <input id="age" type="number" min="1" max="100" name="age"
+                    value="<%= locals.formData?.age ?? '' %>"
+                    <%= locals.formData?.age ? '' : 'disabled' %>>
                 <div class="check-div">
-                    <input type="checkbox" id="age_toggle">
+                    <input type="checkbox" id="age_toggle" <%= locals.formData?.age ? 'checked' : '' %>>
                 </div>
             </div>
             
             <label for="price">Price</label>
-            <input id="price" type="number" step="0.01" min="1" max="100000" name="price" required>
+            <input id="price" type="number" step="0.01" min="1" max="100000" name="price" value="<%= locals.formData?.price ?? '' %>" required>
 
             <label for="stock">Stock</label>
-            <input id="stock" type="number" min="0" max="10000" name="stock" required>
+            <input id="stock" type="number" min="0" max="10000" name="stock" value="<%= locals.formData?.stock ?? '' %>" required>
 
             <button type="submit">Add</button>
 
