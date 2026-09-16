@@ -86,7 +86,6 @@ const whiskey_new_post = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      console.log(errors);
       return res.status(400).render('whiskey_new', {
         title: 'new whiskey',
         errors: errors.array(),

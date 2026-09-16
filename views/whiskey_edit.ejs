@@ -8,7 +8,7 @@
     <div class="form-wrapper">
         <h1>Edit Whiskey</h1>
 
-        <form method="POST" action="" class="whiskey-form" autocomplete="off">
+        <form method="POST" action="" class="whiskey-form" autocomplete="off" novalidate>
 
             <label for="category">Category</label>
             <select id="category" name="category" required>
@@ -47,6 +47,14 @@
                 </button>
             </div>
         </form>
+
+        <% if (locals.errors && errors.length > 0) { %>
+        <ul class="form-errors">
+            <% errors.forEach(err => { %>
+            <li><%= err.msg %></li>
+            <% }) %>
+        </ul>
+        <% } %>
     </div>
 
     <script src="/js/whiskey_form.js"></script>

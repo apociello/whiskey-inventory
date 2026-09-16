@@ -26,7 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 0.5rem;
+  margin-top: 2rem;
 }
 
 .form-wrapper h1 {
@@ -94,4 +94,25 @@ body {
 
 .whiskey-form .double-input input[type='checkbox']:hover {
   cursor: pointer;
+}
+
+/* FORM ERRORS */
+.form-errors {
+  width: 100%;
+  max-width: 500px;
+  list-style: none;
+  padding: 0.8rem 1rem;
+  margin-top: 1rem;
+  border: 1px solid #d33;
+  background-color: #fdecea;
+  color: #b00020;
+  font-size: 0.9rem;
+}
+
+.form-errors li {
+  margin-bottom: 0.3rem;
+}
+
+.form-errors li:last-child {
+  margin-bottom: 0;
 }
