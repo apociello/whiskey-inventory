@@ -75,11 +75,12 @@ const whiskey_edit_get = async (req, res) => {
   res.render('whiskey_edit', {
     whiskey: whiskey,
     title: 'edit whiskey',
+    style: 'form',
   });
 };
 
 const whiskey_new_get = (req, res) => {
-  res.render('whiskey_new', { title: 'new whiskey' });
+  res.render('whiskey_new', { title: 'new whiskey', style: 'form', });
 };
 
 const whiskey_new_post = [
@@ -90,6 +91,7 @@ const whiskey_new_post = [
     if (!errors.isEmpty()) {
       return res.status(400).render('whiskey_new', {
         title: 'new whiskey',
+        style: 'form',
         errors: errors.array(),
         formData: req.body,
       });
@@ -128,6 +130,7 @@ const whiskey_edit_post = [
       const whiskey = await db.getWhiskey(id);
       return res.status(400).render('whiskey_edit', {
         title: 'edit whiskey',
+        style: 'form',
         whiskey,
         errors,
         formData: req.body,
@@ -159,6 +162,7 @@ const whiskey_delete_post = async (req, res) => {
     const whiskey = await db.getWhiskey(id);
     return res.status(401).render('whiskey_edit', {
       title: 'edit whiskey',
+      style: 'form',
       whiskey,
       errors: [{ msg: 'Incorrect password.' }],
       formData: req.body,
