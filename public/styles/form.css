@@ -66,6 +66,8 @@
 .whiskey-form .double-input input[type='checkbox'] {
   margin-bottom: 0;
   cursor: pointer;
+  width: 1rem;
+  height: 1rem;
 }
 
 /* FORM ERRORS */
