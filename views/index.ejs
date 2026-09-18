@@ -2,7 +2,7 @@
 
 <div class="inventory-controls"> 
     <form action="/inventory" method="GET" class="left">
-        <input type="text" name="search" value="<%= locals.search || '' %>" placeholder="Search...">
+        <input type="text" name="search" value="<%= locals.search || '' %>" placeholder="Search..." autocomplete="off">
 
         <select name="category">
             <option value="">All categories</option>

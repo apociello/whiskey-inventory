@@ -2,54 +2,71 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .form-wrapper h1 {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
+  font-size: 1.65rem;
+  letter-spacing: -0.03em;
 }
 
 .form-wrapper .whiskey-form {
-  max-width: 500px;
   width: 100%;
-  padding: 1.6rem;
-  border: 1px solid #ccc;
+  max-width: 440px;
+  padding: 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  box-shadow: 0 3px 12px #00000006;
 }
 
 .whiskey-form label {
   display: block;
-  margin-bottom: 0.4rem;
-  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  color: #474747;
+  color: var(--muted);
 }
 
 .whiskey-form input,
 .whiskey-form select {
   width: 100%;
-  padding: 0.6rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  height: 38px;
+  padding: 0 0.7rem;
+  margin-bottom: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.9rem;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-.whiskey-form input:last-of-type {
-  margin-bottom: 1.6rem;
+.whiskey-form input:focus,
+.whiskey-form select:focus {
+  border-color: #999;
+  box-shadow: 0 0 0 3px #0000000d;
+}
+
+.whiskey-form input::placeholder {
+  color: #aaa;
 }
 
 .whiskey-form input:disabled {
-  color: #777;
-  background-color: #f5f5f5;
+  color: #999;
+  background: #f5f5f5;
+  cursor: not-allowed;
 }
 
-.whiskey-form button {
-  width: 100%;
-  padding: 0.5rem 0.8rem;
-}
-
+/* AGE */
 .whiskey-form .double-input {
   display: flex;
-  margin-bottom: 1.6rem;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.9rem;
 }
 
 .whiskey-form .double-input input[type='number'] {
@@ -58,35 +75,115 @@
 }
 
 .whiskey-form .double-input .check-div {
+  flex: 0 0 54px;
+  height: 38px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: #fafafa;
 }
 
+/* AGE TOGGLE */
 .whiskey-form .double-input input[type='checkbox'] {
-  margin-bottom: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  width: 36px;
+  height: 21px;
+  margin: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #d8d8d8;
   cursor: pointer;
-  width: 1rem;
-  height: 1rem;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.whiskey-form .double-input input[type='checkbox']::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px #00000018;
+  transition: transform 0.2s ease;
+}
+
+.whiskey-form .double-input input[type='checkbox']:checked {
+  background: var(--accent);
+}
+
+.whiskey-form .double-input input[type='checkbox']:checked::after {
+  transform: translateX(15px);
+}
+
+.whiskey-form .double-input input[type='checkbox']:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #00000018;
+}
+
+/* REMOVE NUMBER SPINNERS */
+.whiskey-form input[type='number']::-webkit-inner-spin-button,
+.whiskey-form input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.whiskey-form input[type='number'] {
+  appearance: textfield;
+}
+
+/* BUTTONS */
+.whiskey-form button {
+  width: 100%;
+  height: 38px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.45rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* EDIT / DELETE BUTTONS */
+.buttons-div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buttons-div button {
+  flex: 1;
+}
+
+.buttons-div button:last-child {
+  background: #fff;
+  border-color: #ccc;
+  color: var(--danger);
 }
 
 /* FORM ERRORS */
 .form-errors {
   width: 100%;
-  max-width: 500px;
+  max-width: 440px;
+  margin-top: 0.9rem;
+  padding: 0.7rem 0.85rem;
   list-style: none;
-  padding: 0.8rem 1rem;
-  margin-top: 1rem;
-  border: 1px solid #d33;
-  background-color: #fdecea;
-  color: #b00020;
-  font-size: 0.9rem;
+  border: 1px solid #e0b4b4;
+  border-radius: 0.45rem;
+  background: #fff7f7;
+  color: var(--danger);
+  font-size: 0.82rem;
 }
 
-.form-errors li {
-  margin-bottom: 0.3rem;
-}
-
-.form-errors li:last-child {
-  margin-bottom: 0;
+.form-errors li:not(:last-child) {
+  margin-bottom: 0.2rem;
 }
