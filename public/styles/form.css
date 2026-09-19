@@ -56,12 +56,12 @@
 }
 
 .whiskey-form input::placeholder {
-  color: #b3a78e;
+  color: #aaa;
 }
 
 .whiskey-form input:disabled {
-  color: #a99b83;
-  background: #f1e9db;
+  color: #999;
+  background: #f5f5f5;
   cursor: not-allowed;
 }
 
