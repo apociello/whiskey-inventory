@@ -5,6 +5,11 @@
   margin-top: 1.5rem;
 }
 
+.back-link img {
+  width: 25px;
+  height: 25px;
+}
+
 .form-wrapper h1 {
   margin-bottom: 1.4rem;
   font-size: 1.65rem;
