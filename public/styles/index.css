@@ -17,8 +17,8 @@
 .inventory-controls button {
   height: 36px;
   padding: 0 0.6rem;
-  border-radius: 0.45rem;
-  font-size: 0.85rem;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
   line-height: 1;
 }
 
@@ -34,7 +34,7 @@
 .inventory-controls .right a {
   padding: 0 0.7rem;
   border: 1px solid var(--accent);
-  border-radius: 0.45rem;
+  border-radius: 0.3rem;
   background: var(--accent);
   color: #fff;
   font-weight: 600;
@@ -46,7 +46,7 @@
   align-items: center;
   height: 36px;
   padding: 0 0.75rem;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   line-height: 1;
 }
 
@@ -58,12 +58,12 @@ table {
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 0.65rem;
+  border-radius: 0.4rem;
 }
 
 th,
 td {
-  padding: 0.7rem 0.9rem;
+  padding: 0.75rem 0.9rem;
   text-align: left;
   border-bottom: 1px solid var(--border);
 }
@@ -71,8 +71,14 @@ td {
 th {
   background: var(--accent);
   color: #fff;
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+td {
+  font-size: 0.85rem;
 }
 
 tbody tr:last-child td {
@@ -90,6 +96,6 @@ td a {
   align-items: center;
   justify-content: center;
   color: var(--muted);
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 400;
 }

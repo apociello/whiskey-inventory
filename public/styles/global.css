@@ -1,3 +1,11 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/libre-baskerville.woff2') format('woff2');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,13 +13,15 @@
 }
 
 :root {
-  --bg: #fafafa;
-  --surface: #ffffff;
-  --border: #e2e2e2;
-  --text: #222;
-  --muted: #707070;
-  --accent: #3a3937;
-  --danger: #b42318;
+  --bg: #f5efe6;
+  --surface: #fffaf3;
+  --border: #ddc9a3;
+  --text: #2b2118;
+  --muted: #7a6a55;
+  --accent: #8a4a2c;
+  --accent-dark: #6b3820;
+  --gold: #b8873f;
+  --danger: #9c3b2c;
 }
 
 body {
@@ -21,8 +31,8 @@ body {
   flex-direction: column;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-family: 'Libre Baskerville', Georgia, serif;
 }
 
 button,
@@ -36,5 +46,5 @@ button {
 }
 
 a {
-  color: var(--text);
+  color: var(--accent-dark);
 }
